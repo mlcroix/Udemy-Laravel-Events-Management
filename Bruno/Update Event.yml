@@ -1,0 +1,21 @@
+info:
+  name: Update Event
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{url}}/events/2"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "meepmoop bloop"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
