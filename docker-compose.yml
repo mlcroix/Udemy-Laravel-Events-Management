@@ -9,6 +9,11 @@ services:
     user: "1000:1000"
     environment:
       HOME: /tmp/home
+      XDEBUG_ENABLED: "true"
+      XDEBUG_MODE: "debug"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:

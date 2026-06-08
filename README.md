@@ -64,5 +64,24 @@ docker exec laravel_event_management_app php artisan db:seed
 docker exec laravel_event_management_app php artisan migrate:refresh --seed
 ```
 
-
+## Xdebug
+In order to enable xdebug, install the xdebug plugin and add the following launch.json.
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/var/www/html": "${workspaceFolder}"
+            },
+            "log": true,
+            "hostname": "0.0.0.0"
+        }
+    ]
+}
+```
 

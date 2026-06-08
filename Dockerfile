@@ -10,13 +10,20 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libzip-dev \
-    libpq-dev
+    libpq-dev \
+    $PHPIZE_DEPS
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+
+# Install Xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+# Copy custom php.ini
+COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
