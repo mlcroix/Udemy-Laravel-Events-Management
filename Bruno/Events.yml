@@ -5,7 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{url}}/events"
+  url: "{{url}}/events?include=user,attendees,attendees.user"
+  params:
+    - name: include
+      value: user,attendees,attendees.user
+      type: query
   auth: inherit
 
 settings:
